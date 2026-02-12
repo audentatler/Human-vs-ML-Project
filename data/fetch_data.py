@@ -8,39 +8,25 @@ import os
 
 
 
-def get_dataX():  
+def get_data():  
     # fetch dataset 
     fertility = fetch_ucirepo(id=244) 
   
     # data (as pandas dataframes) 
     X = fertility.data.features 
-  
-    # metadata 
-    print(fertility.metadata) 
-  
-    # variable information 
-    print(fertility.variables) 
-
-    return X
-#...........................................
-
-def get_dataY():  
-    # fetch dataset 
-    fertility = fetch_ucirepo(id=244) 
-  
-    # data (as pandas dataframes) 
     y = fertility.data.targets 
   
     # metadata 
-    print(fertility.metadata) 
+    #print(fertility.metadata) 
   
     # variable information 
-    print(fertility.variables) 
+    #print(fertility.variables) 
 
-    return y
+    feature_names = fertility.variables[fertility.variables['role'] == 'Feature']['name'].tolist()
+    target_name = fertility.variables[fertility.variables['role'] == 'Target']['name'].values[0]
+
+    df = pd.DataFrame(fertility.data.features, columns=feature_names)
+    df[target_name] = fertility.data.targets
+
+    return df, target_name
 #...........................................
-
-x = get_dataX()
-y = get_dataY()
-plt.plot(x, y)
-plt.show()
