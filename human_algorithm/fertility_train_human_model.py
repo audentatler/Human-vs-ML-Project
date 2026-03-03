@@ -37,7 +37,9 @@ for index, row in test_df.iterrows():
 
 print(test_df['altered'])
 print(test_df['normal'])
-test_df['human_prediction'] = 
+# The correct way to pair them row-by-row
+test_df['human_prediction'] = list(zip(test_df['altered'], test_df['normal']))
+
 
 
 test_df['correct'] = test_df['human_prediction'] == test_df[target_name]
@@ -46,13 +48,16 @@ print(f"Human classifier accuracy: {accuracy:.2%}")
 
 print(test_df)
 # Here we print the confusion matrix to see how well the human classifier performed on the test-data subset.
-conf_matrix = pd.crosstab(
-    test_df[target_name],
-    test_df['human_prediction'],
-    rownames=['Actual'],
-    colnames=['Predicted']
-)
-print(conf_matrix)
+test_df['human_prediction'] = test_df['human_prediction'].apply(tuple)
+
+# Now run your crosstab
+#conf_matrix = pd.crosstab(
+    #test_df[target_name],
+    #test_df['human_prediction'],
+    #rownames=['Actual'],
+    #colnames=['Predicted']
+#)
+#print(conf_matrix)
 
 # Finally, we print one example of a failure case where the human classifier got the prediction wrong.
 failure_row = test_df[test_df['human_prediction'] != test_df[target_name]].iloc[0]
