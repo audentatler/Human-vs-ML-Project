@@ -46,11 +46,16 @@ test_df['correct'] = test_df['human_prediction'] == test_df[target_name]
 accuracy = (test_df['human_prediction'] == test_df[target_name]).mean()
 print(f"Human classifier accuracy: {accuracy:.2%}")
 
-print(test_df)
 # Here we print the confusion matrix to see how well the human classifier performed on the test-data subset.
 test_df['human_prediction'] = test_df['human_prediction'].apply(tuple)
 
 # Now run your crosstab
+# Convert lists to tuples so they are hashable
+test_df['human_prediction'] = test_df['human_prediction'].apply(tuple)
+
+#print(test_df.columns)
+# Now run your crosstab
+#test_df.fillna
 #conf_matrix = pd.crosstab(
     #test_df[target_name],
     #test_df['human_prediction'],
@@ -58,6 +63,7 @@ test_df['human_prediction'] = test_df['human_prediction'].apply(tuple)
     #colnames=['Predicted']
 #)
 #print(conf_matrix)
+
 
 # Finally, we print one example of a failure case where the human classifier got the prediction wrong.
 failure_row = test_df[test_df['human_prediction'] != test_df[target_name]].iloc[0]

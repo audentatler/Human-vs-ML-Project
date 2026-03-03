@@ -48,9 +48,9 @@ I am predicting whether fertility is normal or altered based on specific variabl
 
 When examining the data and visualizations, I focused on the features accident, surgical intervention, and smoking because they had the strongest correlation.
 
-The plots/tables suggested a possible threshold for ___, and we considered values above or below this point to see how they might relate to ___.
+The data was mostly binary, so the values either had to meet a certain criteria or did not. This made the threshold for each value easy to find.
 
-From the summary tables and visualizations, it appeared that ___ could influence classification, which led us to ___ in our decision rules.
+From the summary tables and visualizations, it appeared that a certain quadrant on the 3d model could influence classification, which led me to consider using the variables accident, smoking, and surgical_intervention in my decision rules.
 
 ### Confusion Matrix
 
@@ -58,16 +58,18 @@ Accuracy: 56.00%
 
 | Actual \ Predicted   |Altered  | Not Altered (Normal)
 |----------------------|---------|----------------------|
-| Altered              |   12    |                      |
-| Not Altered (Normal) |         |         88           |
+| Altered              |   12    |         60           |
+| Not Altered (Normal) |   16    |         88           |
 
-One example where our algorithm worked well is when the inputs were ___, leading to a correct prediction of ___ because ___.
 
-An example where the algorithm did not perform as expected is when the inputs were ___, resulting in a prediction of ___ instead of ___, which may have happened because ___.
+Due to the three-dimensional nature of the model, the only valid inputs are accident, surgical_intervention, and smoking.
 
-These examples of success and failure highlight patterns in the data or limitations in our rules, such as ___.
+These examples of success and failure highlight patterns in the data or limitations in my rules, such as the fact that the values were binary, so there was not a certain pattern or plot to track.
 
-<img width="315" height="334" alt="image" src="https://github.com/user-attachments/assets/23ee1e49-da76-47c2-97b8-c8fbcbef179c" />
+
+<img width="400" height="300" alt="image" src= "human_algorithm/plots/accuracy_scatter_plot.png" />
+
+**Could only get the correct predictions to display.**
 
 ## Machine Learning Model
 
