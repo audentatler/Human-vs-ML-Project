@@ -18,33 +18,35 @@ You may work alone or with a partner. You may choose to work with the provided P
 ---
 
 **Team Members:**  
-- Name 1  
-- Name 2 (if applicable)  
+- Auden Tatler   
 
 **Dataset Used:**  
-(e.g. Penguins, Iris, Titanic, etc.)
+Fertility
 
 **Source:**  
-(UCI / Kaggle / Provided dataset)
+UCI
 
-**Target Variable (What we are predicting):**  
-(e.g. species, survival, diagnosis)
+**Target Variable (What I am predicting):**  
+I am predicting whether fertility is normal or altered based on specific variables.
 
 **Features Used:**  
-- Feature 1  
-- Feature 2  
-- Feature 3
+- Accident 
+- Surgical Intervention
+- Smoking
 
 **[Video Review](https://)**
 
 ## Human Algorithm
 
 ### Pseudo-Code
-```text
-Write your human decision rules here.
+``` 
+    if x = 0.0 and y = 1.0 and z = 0.0:
+        fertility = altered
+    else:
+        fertitility = normal
 ```
 
-When examining the data and visualizations, we focused on the features ___ and ___ because ___.
+When examining the data and visualizations, I focused on the features accident, surgical intervention, and smoking because they had the strongest correlation.
 
 The plots/tables suggested a possible threshold for ___, and we considered values above or below this point to see how they might relate to ___.
 
@@ -52,13 +54,12 @@ From the summary tables and visualizations, it appeared that ___ could influence
 
 ### Confusion Matrix
 
-Accuracy: ?
+Accuracy: 56.00%
 
-| Actual \ Predicted | Class 1 | Class 2 | Class 3 |
-|-------------------|---------|---------|---------|
-| **Class 1**       |         |         |         |
-| **Class 2**       |         |         |         |
-| **Class 3**       |         |         |         |
+| Actual \ Predicted   |Altered  | Not Altered (Normal)
+|----------------------|---------|----------------------|
+| Altered              |   12    |                      |
+| Not Altered (Normal) |         |         88           |
 
 One example where our algorithm worked well is when the inputs were ___, leading to a correct prediction of ___ because ___.
 

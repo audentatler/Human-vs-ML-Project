@@ -2,7 +2,11 @@ from ucimlrepo import fetch_ucirepo
 import pandas as pd
 import matplotlib.pyplot as plt
 import os
-
+from sklearn.cluster import KMeans
+from sklearn import preprocessing
+from sklearn.decomposition import PCA
+from pandas.plotting import parallel_coordinates
+import seaborn as sns
 #...........................................
 # Copied from UCi
 
@@ -30,3 +34,8 @@ def get_data():
 
     return df, target_name
 #...........................................
+
+
+#print(df.dtypes)
+#print(df.describe())
+
