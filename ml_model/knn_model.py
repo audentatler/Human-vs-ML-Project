@@ -4,12 +4,12 @@ import matplotlib.pyplot as plt
 import os
 from sklearn.model_selection import train_test_split
 from sklearn.neighbors import KNeighborsClassifier
-from example.e_data.fetch_data import load_iris_data
+from data.fetch_data import get_data
 
-df, target_name = load_iris_data()
+df, target_name = get_data()
 
-# I selected only the petal length and petal width features for classification.
-X = df[['petal length', 'petal width']]
+# I selected accident, surgical_intervention, and smoking as my variables.
+X = df[['accident', 'surgical_intervention', 'smoking']]
 y = df[target_name]
 
 X_train, X_test, y_train, y_test = train_test_split(
@@ -79,21 +79,39 @@ os.makedirs("example/e_ml_model/plots", exist_ok=True)
 # plt.close()
 
 # Create a visualization for test data
-plt.figure(figsize=(8, 6))
-sns.scatterplot(
-    data=test_df,
-    x='petal length',
-    y='petal width',
-    hue='correct',
-    style='correct',
-    s=100,
-    palette={True: 'green', False: 'red'}
-)
+fig = plt.figure(figsize=(10, 8)) # Adjusted figure size for 3D
+ax = fig.add_subplot(111, projection='3d') #
 
-plt.title('KNN Algorithm: Correct vs Incorrect Predictions')
-plt.xlabel('Petal Length (cm)')
-plt.ylabel('Petal Width (cm)')
-plt.legend(title='Prediction Correct')
-plt.grid(True)
-plt.savefig('example/e_ml_model/plots/knn_model_test_results.png', dpi=150)
+# Define the colors based on the 'correct' column for Matplotlib's scatter function
+colors = test_df['correct'].map({True: 'green', False: 'red'})
+
+# Use Matplotlib's scatter function for 3D plotting
+# 'risk_score' is used as the z-axis variable
+ax.scatter(test_df['accident'], test_df['surgical_intervention'], test_df['smoking'],
+           c=colors, s=100, marker='o') #
+
+# Set titles and labels for the axes
+ax.set_title('KNN Algorithm: Correct vs Incorrect Predictions in 3D')
+ax.set_xlabel('Accident')
+ax.set_ylabel('Surgical Intervention')
+ax.set_zlabel('Smoking') # Label for the new z-axis
+
+# Create a custom legend as automatic seaborn legends might not work directly in 3D axes
+import matplotlib.patches as mpatches
+red_patch = mpatches.Patch(color='red', label='Incorrect')
+green_patch = mpatches.Patch(color='green', label='Correct')
+ax.legend(handles=[green_patch, red_patch], title='Prediction Correct')
+
+# Optional: adjust the view angle for a better perspective
+ax.view_init(elev=20., azim=-35) #
+
+# The grid option for 3D plots is managed differently, often enabled by default or through ax.grid(True)
+ax.grid(True)
+
+# Save the figure
+plt.savefig('ml_model/plots/knn_model_test_results_3d.png', dpi=150)
+
+# Display the plot (if you are in an interactive environment)
+# plt.show()
+
 plt.close()
