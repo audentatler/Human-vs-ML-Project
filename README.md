@@ -73,26 +73,27 @@ These examples of success and failure highlight patterns in the data or limitati
 
 ## Machine Learning Model
 
-We chose a value of k = ___ after comparing model performance across different values of k and observing that ___.
+I chose a value of k = 1 after comparing model performance across different values of k and observing that the accuracy was always the same no matter what.
 
-When analyzing the outputs and metrics, we noticed that changing k affected ___, which influenced our final choice.
+When analyzing the outputs and metrics, I noticed that changing k affected absolutely nothing, which influenced our final choice.
 
-Based on the results shown in the tables or visualizations, k = ___ best matched our goals for model performance because ___.
+Based on the results shown in the tables or visualizations, k = 1 best matched our goals for model performance because any number could have been used.
 
 ### Confusion Matrix
 
-Accuracy: ?
+Accuracy: 86.67%
 
-| Actual \ Predicted | Class 1 | Class 2 | Class 3 |
-|-------------------|---------|---------|---------|
-| **Class 1**       |         |         |         |
-| **Class 2**       |         |         |         |
-| **Class 3**       |         |         |         |
+| Actual \ Predicted   |Altered  | Not Altered (Normal)
+|----------------------|---------|----------------------|
+| Altered              |   26    |         8            |
+| Not Altered (Normal) |   8     |         4            |
 
-The table/visualization shows a clear pattern where the model predicts ___ when ___, indicating a strong relationship between these features.
+The table/visualization shows a clear pattern where the model predicts accident is high when smoking is high, indicating a strong relationship between these features.
 
-The confusion matrix reveals that the model most often confuses ___ with ___, suggesting these classes have similar feature values.
+The confusion matrix reveals that the model most often confuses altered with non-altered, suggesting these classes have similar feature values.
 
-Compared to the human algorithm, the KNN model shows different behavior when ___, as seen in the ___ visualization.
+Compared to the human algorithm, the KNN model shows different behavior when surgical intervention is low, as seen in the scatter plot visualization.
 
-<img width="315" height="334" alt="image" src="https://github.com/user-attachments/assets/199ae59d-3470-40c6-9669-60e62b211619" />
+<img width="360" height="334" alt="image" src="/workspaces/Human-vs-ML-Project/ml_model/plots/knn_model_test_results_3d.png">
+
+SCREEN RECORDING LINK: https://drive.google.com/file/d/1aUB20GuyIERbOKFtiP9X_rTbTjGLdn7H/view?usp=sharing

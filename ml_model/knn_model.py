@@ -21,7 +21,7 @@ X_train, X_test, y_train, y_test = train_test_split(
 )
 
 # I selected k=1 for the KNN classifier.
-k = 1
+k = 25
 knn = KNeighborsClassifier(n_neighbors=k)
 knn.fit(X_train, y_train)
 y_pred = knn.predict(X_test)
@@ -115,3 +115,6 @@ plt.savefig('ml_model/plots/knn_model_test_results_3d.png', dpi=150)
 # plt.show()
 
 plt.close()
+
+# k = 1: 86.67% accuracy
+# k = 2:
